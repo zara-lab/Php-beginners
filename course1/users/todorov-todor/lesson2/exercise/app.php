@@ -1,74 +1,31 @@
 <?php
-include './array.php';
+include './data/array.php';
+require_once './lib/functions.php';
 
-printf("\nYour choise is %d\n", $argv[1]);
-
-
-function fsearch()
+if(!isset($argv[1]))
 {
-	/// task 1
-	printf("\n\nTask Search\n\n");
-
-	$target = "Search me";
-	$index = array_search($target, $array);
-
-	if($index >= 0)
-	{
-		printf("Task Array Search: index is %d", $index);
-	}
-	else
-	{
-		printf("Task Array Search: index not found");
-	}
+	printf("\nMissing argument, enter 1-3 to choice task\n");
+	return;
 }
-
-function freplace()
+if($argv[1] < 1 || $argv[1] > 3)
 {
-	//task 2
-	printf("\n\nTask replace\n\n");
-
-	$target = 'I\'m going to become PHP expert!';
-	$index = array_search($target, $array);
-	//printf("index = %d",$index);
-	if($index >= 0)
-	{
-		//printf("format");
-		$temp = $array[$index];
-		$temp = str_replace("PHP", "software", $temp);
-		$array[$index] = $temp;
-	}
-
-	print_r($array);
-}
-
-function fexplode()
-{
-	//Task 3
-	printf("\n\nTask Explode\n\n");
-	$target = "I love ZaraLab";
-	$index = array_search($target, $array);
-	if($index >= 0)
-	{
-		//printf("format");
-		$temp = explode(" ", $array[$index]);
-		$array[$index] = $temp;
-	}
-
-	print_r($array);
+	printf("\nWrong argument, enter 1-3 to choice task\n");
+	return;
 }
 
 switch ($argv[1])
 {
 	case '1':
-		fsearch();
+		fsearch($array);
 		break;
 	case '2':
-		freplace();
+		freplace($array);
 		break;
 	case '3':
-		fexplode();
+		fexplode($array);
 		break;
 	default:
+		// ???
 		printf("\n\nBad argument\n\n");
 		break;
 }
