@@ -25,6 +25,7 @@ $book = array(
 $check = newBook($book);
 if (false === $check) {
     message('Error! Book not saved.');
+    exit(67);
 } else {
     message('Book saved successfully.');
 }

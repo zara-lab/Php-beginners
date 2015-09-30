@@ -1,6 +1,6 @@
 <?php
 
-if (!isset($argv)) {
+if (php_sapi_name() !== 'cli') {
     die('Access denied');
 }
 
@@ -18,6 +18,15 @@ switch ($action) {
         include './includes/cli/list.php';
         break;
 
+    case 'edit':
+        include('./includes/cli/list.php');
+        include './includes/cli/edit.php';
+        break;
+    case 'view':
+        include('./includes/cli/list.php');
+        include './includes/cli/view.php';
+        break;
+
     case 'delete':
         include('./includes/cli/list.php');
         include './includes/cli/delete.php';
@@ -25,5 +34,6 @@ switch ($action) {
 
     default:
         message('Action not found');
+        exit(66);
         break;
 }

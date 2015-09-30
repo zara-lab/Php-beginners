@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Shell proxy to our php application
+php app.php $1
+EXIT_CODE=$?
+
+# We are able to do something with our
+# user defined exite codes on OS level...
+if [ $EXIT_CODE -eq 0 ];
+then
+  # exited successfully
+  echo "[run] Terminated with no errors"
+else
+  # exited with error
+  echo "[run] Terminated with exit code $EXIT_CODE"
+fi
